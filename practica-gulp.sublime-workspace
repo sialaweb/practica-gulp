@@ -131,42 +131,23 @@
 			"file": "output/index.html",
 			"settings":
 			{
-				"buffer_size": 748,
+				"buffer_size": 992,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "var	gulp 				= require('gulp'),\n		sass 				= require('gulp-sass'),\n		concat 			= require('gulp-concat'),\n		watch 			= require('gulp-watch'),\n		plumber 			= require('gulp-plumber'),\n		minify_css 		= require('gulp-minify-css'),\n		uglify 			= require('gulp-uglify'),\n		sourcemaps 		= require('gulp-sourcemaps'),\n		notify	 		= require('gulp-notify'),\n		prefix		 	= require('gulp-autoprefixer')\n		imagemin 		= require('gulp-imagemin'),\n		jshint		   = require('gulp-jshint'),\n		pngquant 		= require('imagemin-pngquant'),\n		browserSync		= require('browser-sync');\n\n//--------------------------------------------------------------\n// VARIABLES DE DESTINO PARA SASS Y JS\n//--------------------------------------------------------------\n\n//preprocessor\n\nvar src = {\n	sass: \"src/sass/**/*.scss\",\n	js: 	\"src/js/**/*.js\",\n	img: 	\"src/img/*\"\n};\n\n//OUTPUT\n\nvar output = {\n	js: 			\"output/js\",\n	css: 			\"output/css\",\n	img: 			\"output/img\",\n	html: 		\"output/**/*.html\",\n	min_css: 	'app.min.css',\n	min_js: 		'app.min.js',\n	dev_css: 	'app.css'\n};\n	 \n//--------------------------------------------------------------\n// Gulp plumber error handler\n//--------------------------------------------------------------\n\nvar onError = function(err) {\n	console.log(err);\n   this.emit('end');\n}\n\n//--------------------------------------------------------------\n//  SASS TO CSS\n//--------------------------------------------------------------\n\ngulp.task('sass', function() {\n\n	return gulp.src(src.sass)\n		.pipe(plumber({\n			errorHandler: onError\n		}))\n		.pipe(sourcemaps.init())\n		.pipe(sass())\n		.pipe(sourcemaps.write({includeContent: false}))\n		.pipe(prefix('last 2 versions'))\n		.pipe(concat(output.min_css))\n		.pipe(gulp.dest(output.css))\n		.pipe(minify_css())\n		.pipe(sourcemaps.write('.'))\n		.pipe(gulp.dest(output.css))\n		.pipe(notify({message: \"hello world are done\"}))\n		.pipe(browserSync.reload({stream: true}));\n});\nasdad\n//--------------------------------------------------------------\n//  COMPILE JS\n//--------------------------------------------------------------\n\ngulp.task('js', function() {\n\n	return gulp.src(src.js)\n		.pipe(plumber({\n			errorHandler: onError\n		}))\n		.pipe(jshint())\n		.pipe(jshint.reporter('default'))\n		.pipe(uglify())\n		.pipe(concat('output.min_js'))\n		.pipe(sourcemaps.init())\n		.pipe(sourcemaps.write())\n		.pipe(gulp.dest(output.js));\n});\n\n//--------------------------------------------------------------\n// IMAGES\n//--------------------------------------------------------------\n\ngulp.task('img', function() {\n	return gulp.src(src.img)\n		.pipe(imagemin({\n			prefressive: true,\n			svgplugins: [{removeViewBox: false}],\n			use: [pngquant()]\n		}))\n		.pipe(gulp.dest(output.img));\n});\n\n\n//--------------------------------------------------------------\n// WATCH \n//--------------------------------------------------------------\n\ngulp.task('watch', function() {\n	browserSync.init({\n		server: \"./output\"\n	});\n	gulp.watch(src.js, ['js']);\n	gulp.watch(src.sass, ['sass']);\n	gulp.watch(src.img, ['img']);\n	gulp.watch(output.html).on(\"change\", browserSync.reload);\n});\n\n//--------------------------------------------------------------\n// DEFAULT\n//--------------------------------------------------------------\n\ngulp.task('default', ['watch', 'sass', 'js', 'img']);\n\n",
+			"file": "output/otro-index.html",
+			"settings":
+			{
+				"buffer_size": 996,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "gulpfile.js",
-			"file_size": 3385,
-			"file_write_time": 130795039975989655,
 			"settings":
 			{
-				"buffer_size": 3265,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 62,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "output/css/app.min.css.map",
-			"settings":
-			{
-				"buffer_size": 915,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 470,
+				"buffer_size": 3308,
 				"line_ending": "Windows"
 			}
 		},
@@ -179,13 +160,18 @@
 			}
 		},
 		{
-			"contents": ".test {\n	background: red;\n	padding: 15px;\n	\n	div {\n		margin-left: 10px\n	}\n}\n\n.page-header {\n	font-weight: bold;\n	color: #4f5a69;\n}\n",
-			"file": "src/sass/style.scss",
-			"file_size": 144,
-			"file_write_time": 130795012908928567,
+			"file": "output/templates/index-2.html",
 			"settings":
 			{
-				"buffer_size": 131,
+				"buffer_size": 991,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sass/style.scss",
+			"settings":
+			{
+				"buffer_size": 149,
 				"line_ending": "Windows"
 			}
 		},
@@ -282,12 +268,14 @@
 		"/C/xampp/htdocs/Labs/practica-gulp",
 		"/C/xampp/htdocs/Labs/practica-gulp/output",
 		"/C/xampp/htdocs/Labs/practica-gulp/output/css",
+		"/C/xampp/htdocs/Labs/practica-gulp/output/templates",
 		"/C/xampp/htdocs/Labs/practica-gulp/src",
 		"/C/xampp/htdocs/Labs/practica-gulp/src/sass",
 		"/C/xampp/htdocs/Labs/practica-gulp/src/sass/misc"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/Labs/practica-gulp/package.json",
 		"/C/xampp/htdocs/Labs/practica-gulp/output/css/app.min.css.map",
 		"/C/xampp/htdocs/Labs/practica-gulp/.gitignore",
 		"/C/xampp/htdocs/Labs/practica-gulp/output/css/app.min.css",
@@ -295,7 +283,6 @@
 		"/C/xampp/htdocs/Labs/practica-gulp/dist/css/app.min.css",
 		"/C/xampp/htdocs/Labs/practica-gulp/dist/css/app.css",
 		"/C/Users/yoansky/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/xampp/htdocs/Labs/practica-gulp/package.json",
 		"/C/xampp/htdocs/Labs/practica-gulp/dist/js/app.min.js",
 		"/C/xampp/htdocs/Labs/practica-gulp/src/sass/misc/test.scss",
 		"/C/xampp/htdocs/Labs/practica-gulp/src/sass/merge.scss",
@@ -598,15 +585,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 748,
+						"buffer_size": 992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								535,
-								535
+								206,
+								206
 							]
 						],
 						"settings":
@@ -647,19 +634,64 @@
 				},
 				{
 					"buffer": 1,
-					"file": "gulpfile.js",
+					"file": "output/otro-index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3265,
+						"buffer_size": 996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1846,
-								1846
+								211,
+								211
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"apply_syntax_touched": true,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3109,
+								3109
 							]
 						],
 						"settings":
@@ -683,144 +715,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 811.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 62,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								62,
-								62
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Seti_UI/Langs/Git.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "output/css/app.min.css.map",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 915,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								375,
-								375
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1305.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 470,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								361,
-								361
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Seti_UI/Langs/npm JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -830,7 +728,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "src/js/commands.js",
 					"semi_transient": false,
 					"settings":
@@ -842,8 +740,8 @@
 						"selection":
 						[
 							[
-								32,
-								32
+								107,
+								107
 							]
 						],
 						"settings":
@@ -878,24 +776,69 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/sass/style.scss",
+					"buffer": 4,
+					"file": "output/templates/index-2.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 131,
+						"buffer_size": 991,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								41,
-								41
+								991,
+								991
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"apply_syntax_touched": true,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 85.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/sass/style.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
 							]
 						],
 						"settings":
@@ -930,11 +873,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "dist/css/app.css",
 					"semi_transient": false,
 					"settings":
@@ -979,7 +922,7 @@
 						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

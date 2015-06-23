@@ -68,7 +68,7 @@ gulp.task('sass', function() {
 		//.pipe(notify({message: "hello world are done"}))
 		.pipe(browserSync.reload({stream: true}));
 });
-asdad
+
 //--------------------------------------------------------------
 //  COMPILE JS
 //--------------------------------------------------------------
@@ -109,6 +109,7 @@ gulp.task('img', function() {
 
 gulp.task('watch', function() {
 	browserSync.init({
+		//proxy: "ejemplo = localhost/sialaweb-dev"
 		server: "./output"
 	});
 	gulp.watch(src.js, ['js']);
