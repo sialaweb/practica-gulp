@@ -1,0 +1,1 @@
+function run(){return!0}function call_it(n){console.log(n),alert(1)}call_it(name);

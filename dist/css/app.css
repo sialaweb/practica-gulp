@@ -1,0 +1,30 @@
+.container {
+  margin-top: 10px;
+  opacity: 5;
+  box-sizing: border-box;
+  -webkit-transform: scale(0.5);
+      -ms-transform: scale(0.5);
+          transform: scale(0.5);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+.test {
+  background: red;
+  padding: 15px; }
+
+.test div {
+  margin-left: 10px; }
+
+.page-header {
+  font-weight: 700;
+  color: #363636; }
+
+body {
+  color: #000; }
